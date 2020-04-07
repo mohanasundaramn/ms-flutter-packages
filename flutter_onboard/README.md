@@ -8,7 +8,7 @@ An awesome OnBoard ui for both android and ios
 
 ```yaml
 dependencies:
-  flutter_onboard: ^0.0.1
+  flutter_onboard: ^0.0.2
 ```
 
 ## Basic Usage
@@ -20,6 +20,7 @@ import 'package:flutter_onboard/flutter_onboard.dart';
 ```dart
 OnBoard(
     onBoardData: onBoardData , /// List<OnBoardModel>
+    pageController: pageController,
     onSkip: () {
       print('skipped');
     },
@@ -66,16 +67,19 @@ final List<OnBoardModel> onBoardData = [
 | `imageHeight`        | false    | `[double]` OnBoard Image height                          |
 | `skipButton`         | false    | `[Widget]` custom skip button                            |
 | `nextButton`         | false    | `[Widget]` custom next/done button                       |
-| `pageController`     | false    | `[PageController]` controller for PageView               |
+| `pageController`     | true     | `[PageController]` controller for PageView               |
 | `duration`           | false    | `[Duration]` Animation Duration of one screen to another |
 | `curve`              | false    | `[Curve]` Animation Curve of one screen to another       |
 | `pageIndicatorWidth` | false    | `[double]` width of page indicator                       |
 
 ## Custom Usage Example:
 
+> Note: for custom usage inorder to access [`OnBoardState`] example uses `provider` package
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(App());
@@ -92,78 +96,103 @@ class App extends StatelessWidget {
 
 class HomeScreen extends StatelessWidget {
   final PageController _pageController = PageController();
-  final onBoardKey = GlobalKey<OnBoardState>();
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: OnBoard(
-        key: onBoardKey,
-        pageController: _pageController,
-        onSkip: () {
-          print('skipped');
-        },
-        onDone: () {
-          print('done tapped');
-        },
-        pageIndicatorWidth: 100,
-        onBoardData: onBoardData,
-        titleStyles: TextStyle(
-          color: Colors.deepOrange,
-          fontSize: 18,
-          fontWeight: FontWeight.w900,
-          letterSpacing: 0.15,
-        ),
-        descriptionStyles: TextStyle(
-          fontSize: 16,
-          color: Colors.brown.shade300,
-        ),
-        skipButton: FlatButton(
-          onPressed: () {
+    return Provider<OnBoardState>(
+      create: (_) => OnBoardState(),
+      child: Scaffold(
+        body: OnBoard(
+          pageController: _pageController,
+          onSkip: () {
             print('skipped');
           },
-          child: Text(
-            "Skip",
-            style: TextStyle(color: Colors.deepOrangeAccent),
+          onDone: () {
+            print('done tapped');
+          },
+          pageIndicatorWidth: 100,
+          onBoardData: onBoardData,
+          titleStyles: TextStyle(
+            color: Colors.deepOrange,
+            fontSize: 18,
+            fontWeight: FontWeight.w900,
+            letterSpacing: 0.15,
           ),
-        ),
-        nextButton: InkWell(
-          onTap: _onNextTap,
-          child: Container(
-            width: 230,
-            height: 50,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              gradient: LinearGradient(
-                colors: [Colors.redAccent, Colors.deepOrangeAccent],
-              ),
-            ),
+          descriptionStyles: TextStyle(
+            fontSize: 16,
+            color: Colors.brown.shade300,
+          ),
+          skipButton: FlatButton(
+            onPressed: () {
+              print('skipped');
+            },
             child: Text(
-              "Next",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+              "Skip",
+              style: TextStyle(color: Colors.deepOrangeAccent),
             ),
+          ),
+          nextButton: Consumer(
+            builder: (BuildContext context, OnBoardState state, Widget child) {
+              return InkWell(
+                onTap: () => _onNextTap(state),
+                child: Container(
+                  width: 230,
+                  height: 50,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    gradient: LinearGradient(
+                      colors: [Colors.redAccent, Colors.deepOrangeAccent],
+                    ),
+                  ),
+                  child: Text(
+                    state.isLastPage ? "Done" : "Next",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ),
     );
   }
 
-  void _onNextTap() {
-    if (!onBoardKey.currentState.isLastPage) {
+  void _onNextTap(OnBoardState onBoardState) {
+    if (!onBoardState.isLastPage) {
       _pageController.animateToPage(
-        onBoardKey.currentState.page + 1,
+        onBoardState.page + 1,
         duration: Duration(milliseconds: 250),
         curve: Curves.easeInOutSine,
       );
     } else {
-      print('done');
+      print("done");
     }
   }
 }
+
+final List<OnBoardModel> onBoardData = [
+  OnBoardModel(
+    title: "Set your own goals and get better",
+    description: "Goal support your motivation and inspire you to work harder",
+    imgUrl: "assets/images/weight.png",
+  ),
+  OnBoardModel(
+    title: "Track your progress with statistics",
+    description:
+        "Analyse personal result with detailed chart and numerical values",
+    imgUrl: 'assets/images/graph.png',
+  ),
+  OnBoardModel(
+    title: "Create photo comparisons and share your results",
+    description:
+        "Take before and after photos to visualize progress and get the shape that you dream about",
+    imgUrl: 'assets/images/phone.png',
+  ),
+];
+
 ```
 
 for more info check [example](example)
