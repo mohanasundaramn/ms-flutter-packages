@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
 import 'package:flutter_onboard/src/contants/constants.dart';
-import 'package:flutter_onboard/src/states/on_board_state.dart';
 import 'package:flutter_onboard/src/widgets/page_indicator.dart';
 import 'package:provider/provider.dart';
 
@@ -80,7 +79,7 @@ class OnBoard extends StatelessWidget {
         footerContentHeight -
         pageIndicatorHeight;
 
-    return ChangeNotifierProvider(
+    return ChangeNotifierProvider<OnBoardState>(
       create: (_) => OnBoardState(),
       child: SafeArea(
         child: Column(

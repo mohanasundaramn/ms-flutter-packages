@@ -1,16 +1,13 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-part 'onboard_model.freezed.dart';
-part 'onboard_model.g.dart';
+class OnBoardModel {
+  final String title;
+  final String description;
+  final String imgUrl;
 
-@freezed
-abstract class OnBoardModel with _$OnBoardModel {
-  const factory OnBoardModel({
-    @required String title,
-    @required String description,
-    @required String imgUrl,
-  }) = _OnBoardModel;
-
-  factory OnBoardModel.fromJson(Map<String, dynamic> json) =>
-      _$OnBoardModelFromJson(json);
+  const OnBoardModel({
+    @required this.title,
+    @required this.description,
+    @required this.imgUrl,
+  });
 }

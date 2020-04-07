@@ -1,6 +1,6 @@
 name: flutter_onboard
-description: An awesome onboard ui for both android and ios
-version: 0.0.2
+description: A simple, elegent and easy to use onboard widget for both android and ios devices.
+version: 0.0.2+1
 homepage: https://github.com/mohanasundaramn/ms-flutter-packages
 repository: https://github.com/mohanasundaramn/ms-flutter-packages/tree/master/flutter_onboard
 
@@ -10,15 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  freezed_annotation: ^0.7.1
-  json_serializable: ^3.3.0
   provider: ^4.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  freezed: ^0.10.4
-  build_runner:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
