@@ -80,7 +80,7 @@ class OnBoard extends StatelessWidget {
         pageIndicatorHeight;
 
     return ChangeNotifierProvider<OnBoardState>(
-      create: (_) => OnBoardState(),
+      create: (BuildContext context) => OnBoardState(),
       child: SafeArea(
         child: Column(
           children: <Widget>[
