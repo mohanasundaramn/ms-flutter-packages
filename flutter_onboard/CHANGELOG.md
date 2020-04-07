@@ -2,6 +2,8 @@
 
 - Bug fix and Enhancement
 
+---
+
 ## [0.0.2]
 
 ---
