@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_onboard/src/models/page_indicator_style_model.dart';
 
-class PageIndicator extends StatefulWidget {
+class PageIndicator extends StatelessWidget {
   /// No of dot to be appeared should be equal to
   /// the length of the [List<OnBoardModel>]
   final int count;
@@ -11,25 +12,24 @@ class PageIndicator extends StatefulWidget {
   /// Width of OnBoardIndicatorContainer
   final double pageIndicatorWidth;
 
+  /// styling [PageIndicatorStyle]
+  final PageIndicatorStyle pageIndicatorStyle;
+
   const PageIndicator({
     Key key,
     @required this.count,
     @required this.activePage,
     this.pageIndicatorWidth,
+    this.pageIndicatorStyle,
   }) : super(key: key);
 
   @override
-  _PageIndicatorState createState() => _PageIndicatorState();
-}
-
-class _PageIndicatorState extends State<PageIndicator> {
-  @override
   Widget build(BuildContext context) {
-    final _dots = List.generate(widget.count, _dotBuilder);
+    final _dots = List.generate(count, _dotBuilder);
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeInOutSine,
-      width: widget.pageIndicatorWidth,
+      width: pageIndicatorWidth,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: _dots,
@@ -38,21 +38,24 @@ class _PageIndicatorState extends State<PageIndicator> {
   }
 
   Widget _dotBuilder(index) {
-    return index == widget.activePage
+    final activeSize = pageIndicatorStyle.activeSize;
+    final inactiveSize = pageIndicatorStyle.inactiveSize;
+
+    return index == activePage
         ? Container(
-            width: 12,
-            height: 12,
-            decoration: const BoxDecoration(
+            width: activeSize.width,
+            height: activeSize.height,
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.deepOrangeAccent,
+              color: pageIndicatorStyle.activeColor,
             ),
           )
         : Container(
-            width: 8,
-            height: 8,
+            width: inactiveSize.width,
+            height: inactiveSize.height,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.deepOrangeAccent.shade200,
+              color: pageIndicatorStyle.inactiveColor,
             ),
           );
   }

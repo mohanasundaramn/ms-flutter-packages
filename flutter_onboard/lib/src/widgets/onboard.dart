@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
 import 'package:flutter_onboard/src/contants/constants.dart';
+import 'package:flutter_onboard/src/models/page_indicator_style_model.dart';
 import 'package:flutter_onboard/src/widgets/page_indicator.dart';
 import 'package:provider/provider.dart';
 
@@ -50,6 +51,9 @@ class OnBoard extends StatelessWidget {
   /// Width of OnBoardIndicatorContainer
   final double pageIndicatorWidth;
 
+  /// [PageIndicatorStyle] dot styles
+  final PageIndicatorStyle pageIndicatorStyle;
+
   const OnBoard({
     Key key,
     @required this.onBoardData,
@@ -65,6 +69,11 @@ class OnBoard extends StatelessWidget {
     this.duration = const Duration(milliseconds: 250),
     this.curve = Curves.easeInOut,
     this.pageIndicatorWidth = 150,
+    this.pageIndicatorStyle = const PageIndicatorStyle(
+        activeColor: Colors.blue,
+        inactiveColor: Colors.blueAccent,
+        activeSize: Size(12, 12),
+        inactiveSize: Size(8, 8)),
   })  : assert(onBoardData != null),
         assert(onDone != null),
         assert(onSkip != null),
@@ -166,6 +175,7 @@ class OnBoard extends StatelessWidget {
                     count: onBoardData.length,
                     activePage: state.page,
                     pageIndicatorWidth: pageIndicatorWidth,
+                    pageIndicatorStyle: pageIndicatorStyle,
                   ),
                 );
               },

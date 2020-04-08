@@ -8,7 +8,7 @@ An awesome OnBoard ui for both android and ios
 
 ```yaml
 dependencies:
-  flutter_onboard: ^0.0.2
+  flutter_onboard: ^0.0.3
 ```
 
 ## Basic Usage
@@ -19,7 +19,7 @@ import 'package:flutter_onboard/flutter_onboard.dart';
 
 ```dart
 OnBoard(
-    onBoardData: onBoardData , /// List<OnBoardModel>
+    onBoardData: onBoardData ,
     pageController: pageController,
     onSkip: () {
       print('skipped');
@@ -46,7 +46,7 @@ final List<OnBoardModel> onBoardData = [
     imgUrl: 'assets/images/graph.png',
   ),
   OnBoardModel(
-    title: "Create photo comparissions and share your results",
+    title: "Create photo comparisons and share your results",
     description:
         "Take before and after photos to visualize progress and get the shape that you dream about",
     imgUrl: 'assets/images/phone.png',
@@ -56,25 +56,26 @@ final List<OnBoardModel> onBoardData = [
 
 ## Custom Usage
 
-| Properties           | Required | Description                                              |
-| -------------------- | -------- | -------------------------------------------------------- |
-| `onBoardData`        | true     | `[List<OnBoardModel>]` Data for OnBoard                  |
-| `onSkip`             | true     | `[VoidCallback]`, when skip action performed             |
-| `onDone`             | true     | `[VoidCallback]`, when done action performed             |
-| `titleStyles`        | false    | `[TextStyles]`, used to style title text                 |
-| `descriptionStyles`  | false    | `[TextStyles]`, used to style description text           |
-| `imageWidth`         | false    | `[double]` OnBoard Image width                           |
-| `imageHeight`        | false    | `[double]` OnBoard Image height                          |
-| `skipButton`         | false    | `[Widget]` custom skip button                            |
-| `nextButton`         | false    | `[Widget]` custom next/done button                       |
-| `pageController`     | true     | `[PageController]` controller for PageView               |
-| `duration`           | false    | `[Duration]` Animation Duration of one screen to another |
-| `curve`              | false    | `[Curve]` Animation Curve of one screen to another       |
-| `pageIndicatorWidth` | false    | `[double]` width of page indicator                       |
+| Properties           | Required | Description                                                                              |
+| -------------------- | -------- | ---------------------------------------------------------------------------------------- |
+| `onBoardData`        | true     | `[List<OnBoardModel>]` Data for OnBoard                                                  |
+| `onSkip`             | true     | `[VoidCallback]`, when skip action performed                                             |
+| `onDone`             | true     | `[VoidCallback]`, when done action performed                                             |
+| `titleStyles`        | false    | `[TextStyles]`, used to style title text                                                 |
+| `descriptionStyles`  | false    | `[TextStyles]`, used to style description text                                           |
+| `imageWidth`         | false    | `[double]` OnBoard Image width                                                           |
+| `imageHeight`        | false    | `[double]` OnBoard Image height                                                          |
+| `skipButton`         | false    | `[Widget]` custom skip button                                                            |
+| `nextButton`         | false    | `[Widget]` custom next/done button                                                       |
+| `pageController`     | true     | `[PageController]` controller for PageView                                               |
+| `duration`           | false    | `[Duration]` Animation Duration of one screen to another                                 |
+| `curve`              | false    | `[Curve]` Animation Curve of one screen to another                                       |
+| `pageIndicatorWidth` | false    | `[double]` width of page indicator                                                       |
+| `pageIndicatorStyle` | false    | `[PageIndicatorStyle]` Configure width, height, active & inactive color of pageIndicator |
 
 ## Custom Usage Example:
 
-> Note: for custom usage inorder to access [`OnBoardState`] example uses `provider` package
+> Note: for custom usage in order to access [`OnBoardState`] example uses `provider` package
 
 ```dart
 import 'package:flutter/material.dart';
@@ -109,6 +110,12 @@ class HomeScreen extends StatelessWidget {
           onDone: () {
             print('done tapped');
           },
+          pageIndicatorStyle: PageIndicatorStyle(
+            inactiveColor: Colors.deepOrangeAccent,
+            activeColor: Colors.deepOrange,
+            inactiveSize: Size(8, 8),
+            activeSize: Size(12, 12),
+          ),
           pageIndicatorWidth: 100,
           onBoardData: onBoardData,
           titleStyles: TextStyle(
@@ -196,6 +203,14 @@ final List<OnBoardModel> onBoardData = [
 ```
 
 for more info check [example](example)
+
+## TODO
+
+- Add more custom page indicators.
+
+- Dynamic calculation of width, height, padding, margin.
+
+> Need more features feel free to raise an issue
 
 ## License
 

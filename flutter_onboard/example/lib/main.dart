@@ -42,6 +42,12 @@ class HomeScreen extends StatelessWidget {
             fontSize: 16,
             color: Colors.brown.shade300,
           ),
+          pageIndicatorStyle: PageIndicatorStyle(
+            inactiveColor: Colors.deepOrangeAccent,
+            activeColor: Colors.deepOrange,
+            inactiveSize: Size(8, 8),
+            activeSize: Size(12, 12),
+          ),
           skipButton: FlatButton(
             onPressed: () {
               print('skipped');
@@ -51,7 +57,7 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(color: Colors.deepOrangeAccent),
             ),
           ),
-          nextButton: Consumer(
+          nextButton: Consumer<OnBoardState>(
             builder: (BuildContext context, OnBoardState state, Widget child) {
               return InkWell(
                 onTap: () => _onNextTap(state),

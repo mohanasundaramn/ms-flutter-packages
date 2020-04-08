@@ -1,3 +1,7 @@
+## [0.0.3]
+
+- Custom styles for page indicator using `pageIndicatorStyle`
+
 ## [0.0.2+1]
 
 - Bug fix and Enhancement
