@@ -1,3 +1,7 @@
+## [0.0.3+1]
+
+- Minor Enhancement
+
 ## [0.0.3]
 
 - Custom styles for page indicator using `pageIndicatorStyle`

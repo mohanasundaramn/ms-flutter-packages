@@ -31,7 +31,6 @@ class HomeScreen extends StatelessWidget {
             print('done tapped');
           },
           onBoardData: onBoardData,
-          pageIndicatorWidth: 100,
           titleStyles: TextStyle(
             color: Colors.deepOrange,
             fontSize: 18,
@@ -43,6 +42,7 @@ class HomeScreen extends StatelessWidget {
             color: Colors.brown.shade300,
           ),
           pageIndicatorStyle: PageIndicatorStyle(
+            width: 100,
             inactiveColor: Colors.deepOrangeAccent,
             activeColor: Colors.deepOrange,
             inactiveSize: Size(8, 8),

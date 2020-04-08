@@ -8,8 +8,10 @@ An awesome OnBoard ui for both android and ios
 
 ```yaml
 dependencies:
-  flutter_onboard: ^0.0.3
+  flutter_onboard: ^0.0.3+1
 ```
+
+> Waring this plugin is still in early stage some of the API might change in future.
 
 ## Basic Usage
 
@@ -56,22 +58,21 @@ final List<OnBoardModel> onBoardData = [
 
 ## Custom Usage
 
-| Properties           | Required | Description                                                                              |
-| -------------------- | -------- | ---------------------------------------------------------------------------------------- |
-| `onBoardData`        | true     | `[List<OnBoardModel>]` Data for OnBoard                                                  |
-| `onSkip`             | true     | `[VoidCallback]`, when skip action performed                                             |
-| `onDone`             | true     | `[VoidCallback]`, when done action performed                                             |
-| `titleStyles`        | false    | `[TextStyles]`, used to style title text                                                 |
-| `descriptionStyles`  | false    | `[TextStyles]`, used to style description text                                           |
-| `imageWidth`         | false    | `[double]` OnBoard Image width                                                           |
-| `imageHeight`        | false    | `[double]` OnBoard Image height                                                          |
-| `skipButton`         | false    | `[Widget]` custom skip button                                                            |
-| `nextButton`         | false    | `[Widget]` custom next/done button                                                       |
-| `pageController`     | true     | `[PageController]` controller for PageView                                               |
-| `duration`           | false    | `[Duration]` Animation Duration of one screen to another                                 |
-| `curve`              | false    | `[Curve]` Animation Curve of one screen to another                                       |
-| `pageIndicatorWidth` | false    | `[double]` width of page indicator                                                       |
-| `pageIndicatorStyle` | false    | `[PageIndicatorStyle]` Configure width, height, active & inactive color of pageIndicator |
+| Properties           | Required | Description                                                                            |
+| -------------------- | -------- | -------------------------------------------------------------------------------------- |
+| `onBoardData`        | true     | `[List<OnBoardModel>]` Data for OnBoard                                                |
+| `onSkip`             | true     | `[VoidCallback]`, when skip action performed                                           |
+| `onDone`             | true     | `[VoidCallback]`, when done action performed                                           |
+| `titleStyles`        | false    | `[TextStyles]`, used to style title text                                               |
+| `descriptionStyles`  | false    | `[TextStyles]`, used to style description text                                         |
+| `imageWidth`         | false    | `[double]` OnBoard Image width                                                         |
+| `imageHeight`        | false    | `[double]` OnBoard Image height                                                        |
+| `skipButton`         | false    | `[Widget]` custom skip button                                                          |
+| `nextButton`         | false    | `[Widget]` custom next/done button                                                     |
+| `pageController`     | true     | `[PageController]` controller for PageView                                             |
+| `duration`           | false    | `[Duration]` Animation Duration of one screen to another                               |
+| `curve`              | false    | `[Curve]` Animation Curve of one screen to another                                     |
+| `pageIndicatorStyle` | false    | `[PageIndicatorStyle]` Configure width, size, active & inactive color of pageIndicator |
 
 ## Custom Usage Example:
 
@@ -110,13 +111,6 @@ class HomeScreen extends StatelessWidget {
           onDone: () {
             print('done tapped');
           },
-          pageIndicatorStyle: PageIndicatorStyle(
-            inactiveColor: Colors.deepOrangeAccent,
-            activeColor: Colors.deepOrange,
-            inactiveSize: Size(8, 8),
-            activeSize: Size(12, 12),
-          ),
-          pageIndicatorWidth: 100,
           onBoardData: onBoardData,
           titleStyles: TextStyle(
             color: Colors.deepOrange,
@@ -128,6 +122,13 @@ class HomeScreen extends StatelessWidget {
             fontSize: 16,
             color: Colors.brown.shade300,
           ),
+          pageIndicatorStyle: PageIndicatorStyle(
+            width: 100,
+            inactiveColor: Colors.deepOrangeAccent,
+            activeColor: Colors.deepOrange,
+            inactiveSize: Size(8, 8),
+            activeSize: Size(12, 12),
+          ),
           skipButton: FlatButton(
             onPressed: () {
               print('skipped');
@@ -137,7 +138,7 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(color: Colors.deepOrangeAccent),
             ),
           ),
-          nextButton: Consumer(
+          nextButton: Consumer<OnBoardState>(
             builder: (BuildContext context, OnBoardState state, Widget child) {
               return InkWell(
                 onTap: () => _onNextTap(state),
@@ -199,6 +200,7 @@ final List<OnBoardModel> onBoardData = [
     imgUrl: 'assets/images/phone.png',
   ),
 ];
+
 
 ```
 

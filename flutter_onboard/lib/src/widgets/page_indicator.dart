@@ -9,9 +9,6 @@ class PageIndicator extends StatelessWidget {
   /// Active page
   final int activePage;
 
-  /// Width of OnBoardIndicatorContainer
-  final double pageIndicatorWidth;
-
   /// styling [PageIndicatorStyle]
   final PageIndicatorStyle pageIndicatorStyle;
 
@@ -19,7 +16,6 @@ class PageIndicator extends StatelessWidget {
     Key key,
     @required this.count,
     @required this.activePage,
-    this.pageIndicatorWidth,
     this.pageIndicatorStyle,
   }) : super(key: key);
 
@@ -29,7 +25,7 @@ class PageIndicator extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeInOutSine,
-      width: pageIndicatorWidth,
+      width: pageIndicatorStyle.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: _dots,

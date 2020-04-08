@@ -48,9 +48,6 @@ class OnBoard extends StatelessWidget {
   /// @Default [Curves.easeInOut]
   final Curve curve;
 
-  /// Width of OnBoardIndicatorContainer
-  final double pageIndicatorWidth;
-
   /// [PageIndicatorStyle] dot styles
   final PageIndicatorStyle pageIndicatorStyle;
 
@@ -68,8 +65,8 @@ class OnBoard extends StatelessWidget {
     this.nextButton,
     this.duration = const Duration(milliseconds: 250),
     this.curve = Curves.easeInOut,
-    this.pageIndicatorWidth = 150,
     this.pageIndicatorStyle = const PageIndicatorStyle(
+        width: 150,
         activeColor: Colors.blue,
         inactiveColor: Colors.blueAccent,
         activeSize: Size(12, 12),
@@ -174,7 +171,6 @@ class OnBoard extends StatelessWidget {
                   child: PageIndicator(
                     count: onBoardData.length,
                     activePage: state.page,
-                    pageIndicatorWidth: pageIndicatorWidth,
                     pageIndicatorStyle: pageIndicatorStyle,
                   ),
                 );
