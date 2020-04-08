@@ -210,6 +210,8 @@ for more info check [example](example)
 
 - Dynamic calculation of width, height, padding, margin.
 
+- Writing tests
+
 > Need more features feel free to raise an issue
 
 ## License
