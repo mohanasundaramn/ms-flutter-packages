@@ -1,3 +1,7 @@
+## [0.1.0]
+
+- Updated to latest version of provider package
+
 ## [0.0.3+1]
 
 - Minor Enhancement

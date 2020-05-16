@@ -8,10 +8,8 @@ An awesome OnBoard ui for both android and ios
 
 ```yaml
 dependencies:
-  flutter_onboard: ^0.0.3+1
+  flutter_onboard: ^0.1.0
 ```
-
-> Waring this plugin is still in early stage some of the API might change in future.
 
 ## Basic Usage
 
