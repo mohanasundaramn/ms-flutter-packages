@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
 import 'package:provider/provider.dart';
@@ -87,7 +89,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  void _onNextTap(OnBoardState onBoardState) {
+  void _onNextTap(OnBoardState onBoardState, context) {
     if (!onBoardState.isLastPage) {
       _pageController.animateToPage(
         onBoardState.page + 1,
@@ -96,6 +98,7 @@ class HomeScreen extends StatelessWidget {
       );
     } else {
       print("done");
+      Navigator.pushNamed(context, '/namedroute01');
     }
   }
 }

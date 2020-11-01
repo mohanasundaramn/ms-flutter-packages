@@ -118,14 +118,21 @@ class OnBoard extends StatelessWidget {
                       return Container(
                         child: Column(
                           children: <Widget>[
-                            Container(
-                              child: Image.asset(
-                                onBoardData[index].imgUrl,
-                                width: imageWidth,
-                                height: imageHeight,
-                                fit: BoxFit.contain,
-                              ),
+                            onboardTitle(
+                              imgUrl : onBoardData[index].imgUrl,
+                              padding: 30,
+                              imageWidth: imageWidth,
+                              imageHeight: imageWidth
+
                             ),
+                            // Container(
+                            //   child: Image.asset(
+                            //     onBoardData[index].imgUrl,
+                            //     width: imageWidth,
+                            //     height: imageHeight,
+                            //     fit: BoxFit.contain,
+                            //   ),
+                            // ),
                             Container(
                               margin:
                                   const EdgeInsets.symmetric(horizontal: 12),
@@ -219,4 +226,35 @@ class OnBoard extends StatelessWidget {
       onDone();
     }
   }
+}
+
+
+class onboardTitle extends StatelessWidget {
+  // a stateless widget for the image in the onboarding flow
+  onboardTitle({ 
+    this.imgUrl,
+    this.imageWidth,
+    this.imageHeight,
+    this.padding,
+  });
+
+  final String imgUrl;
+  final double imageWidth;
+  final double imageHeight;
+  final int padding;
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(padding),
+      child: Image.asset(
+        imgUrl,
+        width: imageWidth,
+        height: imageHeight,
+        fit: BoxFit.contain,
+
+      ),
+    );
+  };
 }
