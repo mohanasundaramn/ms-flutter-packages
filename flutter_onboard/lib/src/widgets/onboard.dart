@@ -342,8 +342,7 @@ class onboardDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          descpadding != 0 ? descpadding : const EdgeInsets.all(descpadding),
+      padding: descpadding != 0 ? descpadding : EdgeInsets.all(descpadding),
       margin: const EdgeInsets.symmetric(horizontal: 12),
       child: Text(
         description,
