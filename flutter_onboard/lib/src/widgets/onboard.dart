@@ -241,7 +241,7 @@ class onboardTitle extends StatelessWidget {
   final String imgUrl;
   final double imageWidth;
   final double imageHeight;
-  final int padding;
+  final double padding;
   
 
   @override
