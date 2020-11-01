@@ -117,8 +117,7 @@ class OnBoard extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       onboardImage image_section = onboardImage(
                           imgUrl: onBoardData[index].imgUrl,
-                          padding:
-                              30.0, //onBoardData[index].paddingConfig["img"],
+                          padding: onBoardData[index].paddingConfig["img"],
                           imageWidth: imageWidth,
                           imageHeight: imageWidth);
 
@@ -283,7 +282,7 @@ class onboardImage extends StatelessWidget {
     this.imgUrl,
     this.imageWidth,
     this.imageHeight,
-    this.padding: 0.0,
+    this.padding = 0.0,
   });
 
   final String imgUrl;
