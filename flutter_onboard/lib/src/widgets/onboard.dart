@@ -115,75 +115,56 @@ class OnBoard extends StatelessWidget {
                         state.onPageChanged(page, onBoardData.length),
                     itemCount: onBoardData.length,
                     itemBuilder: (BuildContext context, int index) {
-                      final image_section = onboardImage(
+                      onboardImage image_section = onboardImage(
                           imgUrl: onBoardData[index].imgUrl,
-                          padding: onBoardData[index].paddingConfig["img"]
-                              ? onBoardData[index].paddingConfig["img"]
-                              : 0,
+                          padding:
+                              30.0, //onBoardData[index].paddingConfig["img"],
                           imageWidth: imageWidth,
                           imageHeight: imageWidth);
 
-                      final title_section = onboardTitle(
+                      onboardTitle title_section = onboardTitle(
                           title: onBoardData[index].title,
-                          titlepadding:
-                              onBoardData[index].paddingConfig["title"],
+                          //titlepadding: 20.0,
+                          //onBoardData[index].paddingConfig["title"],
                           titleStyles: titleStyles);
-                      final description_section = onboardDescription(
+                      onboardDescription description_section =
+                          onboardDescription(
                         description: onBoardData[index].description,
-                        descpadding: onBoardData[index]
-                                .paddingConfig["description"]
-                            ? onBoardData[index].paddingConfig["description"]
-                            : 0,
+                        descpadding:
+                            0.0, //onBoardData[index].paddingConfig["description"],
                         descriptionStyles: descriptionStyles,
                       );
 
-                      List layoutList = [
-                        image_section,
-                        title_section,
-                        description_section
-                      ];
-                      switch (onBoardData[index].imgAlign) {
-                        case "top":
-                          {
-                            List layoutList = [
-                              image_section,
-                              title_section,
-                              description_section
-                            ];
-                          }
-                          break;
-
-                        case "middle":
-                          {
-                            List layoutList = [
-                              title_section,
-                              image_section,
-                              description_section
-                            ];
-                          }
-                          break;
-
-                        case "bottom":
-                          {
-                            List layoutList = [
-                              title_section,
-                              description_section,
-                              image_section
-                            ];
-                          }
-                          break;
-
-                        default:
-                          {
-                            List layoutList = [
-                              image_section,
-                              title_section,
-                              description_section
-                            ]; //statements;
-                          }
-                          break;
+                      print(onBoardData[index].imgAlign);
+                      List layoutList = [];
+                      if (onBoardData[index].imgAlign == "top") {
+                        layoutList = [
+                          image_section,
+                          title_section,
+                          description_section
+                        ];
+                      } else if (onBoardData[index].imgAlign == "middle") {
+                        layoutList = [
+                          title_section,
+                          image_section,
+                          description_section
+                        ];
+                      } else if (onBoardData[index].imgAlign == "bottom") {
+                        layoutList = [
+                          title_section,
+                          description_section,
+                          image_section
+                        ];
+                      } else {
+                        // print("else triggered");
+                        layoutList = [
+                          title_section,
+                          description_section,
+                          image_section
+                        ];
                       }
 
+                      // print(layoutList);
                       return Container(
                         child: Column(
                           children: <Widget>[
@@ -302,7 +283,7 @@ class onboardImage extends StatelessWidget {
     this.imgUrl,
     this.imageWidth,
     this.imageHeight,
-    this.padding: 0,
+    this.padding: 0.0,
   });
 
   final String imgUrl;
@@ -325,7 +306,7 @@ class onboardImage extends StatelessWidget {
 }
 
 class onboardTitle extends StatelessWidget {
-  onboardTitle({this.title: "", this.titlepadding: 0, this.titleStyles});
+  onboardTitle({this.title: "", this.titlepadding: 0.0, this.titleStyles});
 
   final String title;
   final double titlepadding;
@@ -334,8 +315,9 @@ class onboardTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          titlepadding != 0 ? EdgeInsets.all(titlepadding) : EdgeInsets.all(0),
+      padding: titlepadding != 0.0
+          ? EdgeInsets.all(titlepadding)
+          : EdgeInsets.all(0),
       margin: const EdgeInsets.symmetric(horizontal: 12),
       child: Text(
         title,
