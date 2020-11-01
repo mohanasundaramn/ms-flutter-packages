@@ -119,12 +119,10 @@ class OnBoard extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             onboardTitle(
-                              imgUrl : onBoardData[index].imgUrl,
-                              padding: 30,
-                              imageWidth: imageWidth,
-                              imageHeight: imageWidth
-
-                            ),
+                                imgUrl: onBoardData[index].imgUrl,
+                                padding: 30,
+                                imageWidth: imageWidth,
+                                imageHeight: imageWidth),
                             // Container(
                             //   child: Image.asset(
                             //     onBoardData[index].imgUrl,
@@ -228,10 +226,9 @@ class OnBoard extends StatelessWidget {
   }
 }
 
-
 class onboardTitle extends StatelessWidget {
   // a stateless widget for the image in the onboarding flow
-  onboardTitle({ 
+  onboardTitle({
     this.imgUrl,
     this.imageWidth,
     this.imageHeight,
@@ -242,7 +239,6 @@ class onboardTitle extends StatelessWidget {
   final double imageWidth;
   final double imageHeight;
   final double padding;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -253,8 +249,7 @@ class onboardTitle extends StatelessWidget {
         width: imageWidth,
         height: imageHeight,
         fit: BoxFit.contain,
-
       ),
     );
-  };
+  }
 }
