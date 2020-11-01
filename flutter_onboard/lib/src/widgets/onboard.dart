@@ -302,7 +302,7 @@ class onboardImage extends StatelessWidget {
     this.imgUrl,
     this.imageWidth,
     this.imageHeight,
-    this.padding,
+    this.padding: 0,
   });
 
   final String imgUrl;
@@ -334,7 +334,8 @@ class onboardTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: titlepadding,
+      padding:
+          titlepadding != 0 ? EdgeInsets.all(titlepadding) : EdgeInsets.all(0),
       margin: const EdgeInsets.symmetric(horizontal: 12),
       child: Text(
         title,
@@ -361,7 +362,8 @@ class onboardDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: descpadding != 0 ? descpadding : EdgeInsets.all(descpadding),
+      padding:
+          descpadding != 0 ? EdgeInsets.all(descpadding) : EdgeInsets.all(0),
       margin: const EdgeInsets.symmetric(horizontal: 12),
       child: Text(
         description,
