@@ -117,15 +117,31 @@ class OnBoard extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       final image_section = onboardImage(
                           imgUrl: onBoardData[index].imgUrl,
-                          padding: onBoardData[index].paddingConfig.img
-                              ? onBoardData[index].paddingConfig.img
+                          padding: onBoardData[index].paddingConfig["img"]
+                              ? onBoardData[index].paddingConfig["img"]
                               : 0,
                           imageWidth: imageWidth,
                           imageHeight: imageWidth);
 
-                      final title_section = onboardTitle();
-                      final description_section = onboardDescription();
+                      final title_section = onboardTitle(
+                          title: onBoardData[index].title,
+                          titlepadding:
+                              onBoardData[index].paddingConfig["title"],
+                          titleStyles: titleStyles);
+                      final description_section = onboardDescription(
+                        description: onBoardData[index].description,
+                        descpadding: onBoardData[index]
+                                .paddingConfig["description"]
+                            ? onBoardData[index].paddingConfig["description"]
+                            : 0,
+                        descriptionStyles: descriptionStyles,
+                      );
 
+                      List layoutList = [
+                        image_section,
+                        title_section,
+                        description_section
+                      ];
                       switch (onBoardData[index].imgAlign) {
                         case "top":
                           {
@@ -309,10 +325,11 @@ class onboardImage extends StatelessWidget {
 }
 
 class onboardTitle extends StatelessWidget {
-  onboardTitle({this.title: "", this.titlepadding: 0});
+  onboardTitle({this.title: "", this.titlepadding: 0, this.titleStyles});
 
   final String title;
   final double titlepadding;
+  final TextStyle titleStyles;
 
   @override
   Widget build(BuildContext context) {
@@ -334,10 +351,12 @@ class onboardTitle extends StatelessWidget {
 }
 
 class onboardDescription extends StatelessWidget {
-  onboardDescription({this.description = "", this.descpadding = 0});
+  onboardDescription(
+      {this.description = "", this.descpadding = 0, this.descriptionStyles});
 
   final String description;
   final double descpadding;
+  final TextStyle descriptionStyles;
 
   @override
   Widget build(BuildContext context) {
