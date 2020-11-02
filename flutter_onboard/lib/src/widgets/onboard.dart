@@ -117,20 +117,24 @@ class OnBoard extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       onboardImage image_section = onboardImage(
                           imgUrl: onBoardData[index].imgUrl,
-                          padding: onBoardData[index].paddingConfig["img"],
+                          padding: onBoardData[index]
+                              .paddingConfig["img"]
+                              .toDouble(),
                           imageWidth: imageWidth,
                           imageHeight: imageWidth);
 
                       onboardTitle title_section = onboardTitle(
                           title: onBoardData[index].title,
-                          //titlepadding: 20.0,
-                          //onBoardData[index].paddingConfig["title"],
+                          titlepadding: onBoardData[index]
+                              .paddingConfig["title"]
+                              .toDouble(),
                           titleStyles: titleStyles);
                       onboardDescription description_section =
                           onboardDescription(
                         description: onBoardData[index].description,
-                        descpadding:
-                            0.0, //onBoardData[index].paddingConfig["description"],
+                        descpadding: onBoardData[index]
+                            .paddingConfig["description"]
+                            .toDouble(),
                         descriptionStyles: descriptionStyles,
                       );
 
@@ -282,7 +286,7 @@ class onboardImage extends StatelessWidget {
     this.imgUrl,
     this.imageWidth,
     this.imageHeight,
-    this.padding = 0.0,
+    this.padding = 0,
   });
 
   final String imgUrl;
@@ -305,7 +309,7 @@ class onboardImage extends StatelessWidget {
 }
 
 class onboardTitle extends StatelessWidget {
-  onboardTitle({this.title: "", this.titlepadding: 0.0, this.titleStyles});
+  onboardTitle({this.title: "", this.titlepadding = 0.0, this.titleStyles});
 
   final String title;
   final double titlepadding;
@@ -314,9 +318,7 @@ class onboardTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: titlepadding != 0.0
-          ? EdgeInsets.all(titlepadding)
-          : EdgeInsets.all(0),
+      padding: EdgeInsets.all(titlepadding),
       margin: const EdgeInsets.symmetric(horizontal: 12),
       child: Text(
         title,
@@ -334,7 +336,7 @@ class onboardTitle extends StatelessWidget {
 
 class onboardDescription extends StatelessWidget {
   onboardDescription(
-      {this.description = "", this.descpadding = 0, this.descriptionStyles});
+      {this.description = "", this.descpadding = 0.0, this.descriptionStyles});
 
   final String description;
   final double descpadding;
@@ -343,8 +345,7 @@ class onboardDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          descpadding != 0 ? EdgeInsets.all(descpadding) : EdgeInsets.all(0),
+      padding: EdgeInsets.all(descpadding),
       margin: const EdgeInsets.symmetric(horizontal: 12),
       child: Text(
         description,
