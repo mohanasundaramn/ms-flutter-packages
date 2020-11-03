@@ -117,24 +117,19 @@ class OnBoard extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       onboardImage image_section = onboardImage(
                           imgUrl: onBoardData[index].imgUrl,
-                          padding: onBoardData[index]
-                              .paddingConfig["img"]
-                              .toDouble(),
+                          padding: onBoardData[index].paddingImg.toDouble(),
                           imageWidth: imageWidth,
                           imageHeight: imageWidth);
 
                       onboardTitle title_section = onboardTitle(
                           title: onBoardData[index].title,
-                          titlepadding: onBoardData[index]
-                              .paddingConfig["title"]
-                              .toDouble(),
+                          titlepadding:
+                              onBoardData[index].paddingTitle.toDouble(),
                           titleStyles: titleStyles);
                       onboardDescription description_section =
                           onboardDescription(
                         description: onBoardData[index].description,
-                        descpadding: onBoardData[index]
-                            .paddingConfig["description"]
-                            .toDouble(),
+                        descpadding: onBoardData[index].paddingTitle.toDouble(),
                         descriptionStyles: descriptionStyles,
                       );
 

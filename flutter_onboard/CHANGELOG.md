@@ -1,5 +1,10 @@
 ## [0.1.0]
 
+- Added positioning options for image section
+- Added custom padding options
+
+## [0.1.0]
+
 - Updated to latest version of provider package
 
 ## [0.0.3+1]

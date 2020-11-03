@@ -108,8 +108,9 @@ final List<OnBoardModel> onBoardData = [
     title: "Set your own goals and get better",
     description: "Goal support your motivation and inspire you to work harder",
     imgUrl: "assets/images/weight.png",
-    //imgAlign: "top", //top,middle,bottom
-    paddingConfig: {"title": 30, "description": 0, "img": 30},
+    paddingTitle: 30,
+    paddingImg: 50,
+    paddingDescription: 5,
   ),
   OnBoardModel(
     title: "Track your progress with statistics",
@@ -117,14 +118,13 @@ final List<OnBoardModel> onBoardData = [
         "Analyse personal result with detailed chart and numerical values",
     imgUrl: 'assets/images/graph.png',
     imgAlign: "middle", //top,middle,bottom
-    paddingConfig: {"title": 0, "description": 0, "img": 30},
+    
   ),
   OnBoardModel(
     title: "Create photo comparissions and share your results",
     description:
         "Take before and after photos to visualize progress and get the shape that you dream about",
     imgUrl: 'assets/images/phone.png',
-    imgAlign: "bottom", //top,middle,bottom
-    paddingConfig: {"title": 30, "description": 0, "img": 30},
+    imgAlign: "bottom",
   ),
 ];

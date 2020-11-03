@@ -4,14 +4,18 @@ class OnBoardModel {
   final String title;
   final String description;
   final String imgUrl;
-  final String imgAlign = "middle";
-  final Map paddingConfig = {"title": 0.0, "description": 0.0, "img": 0.0};
+  final String imgAlign;
+  final double paddingTitle;
+  final double paddingDescription;
+  final double paddingImg;
 
-  const OnBoardModel({
+  OnBoardModel({
     @required this.title,
     @required this.description,
     @required this.imgUrl,
-    this.imgAlign,
-    this.paddingConfig,
+    this.imgAlign = "middle",
+    this.paddingTitle = 0.0,
+    this.paddingDescription = 0.0,
+    this.paddingImg = 0.0,
   });
 }

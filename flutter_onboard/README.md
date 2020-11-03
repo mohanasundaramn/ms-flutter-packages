@@ -8,7 +8,7 @@ An awesome OnBoard ui for both android and ios
 
 ```yaml
 dependencies:
-  flutter_onboard: ^0.1.0
+  flutter_onboard: ^0.1.1
 ```
 
 ## Basic Usage
@@ -44,6 +44,7 @@ final List<OnBoardModel> onBoardData = [
     description:
         "Analyse personal result with detailed chart and numerical values",
     imgUrl: 'assets/images/graph.png',
+    imgAlign: "bottom",
   ),
   OnBoardModel(
     title: "Create photo comparisons and share your results",
@@ -185,15 +186,17 @@ final List<OnBoardModel> onBoardData = [
     description: "Goal support your motivation and inspire you to work harder",
     imgUrl: "assets/images/weight.png",
     imgAlign: "middle", //top,middle,bottom
-    paddingConfig: {"title": 0, "description": 0, "img": 30}),  
+    paddingTitle: 20,
+    paddingImg: 10,
+    paddingDescription: 0,  
   ),
   OnBoardModel(
     title: "Track your progress with statistics",
     description:
         "Analyse personal result with detailed chart and numerical values",
     imgUrl: 'assets/images/graph.png',
-    imgAlign: "top",
-    paddingConfig: {"title": 0, "description": 0, "img": 30}),
+    // removing imgAlign will default to 'middle'
+    // removing padding details will default them to 0
   ),
   OnBoardModel(
     title: "Create photo comparisons and share your results",
@@ -201,7 +204,7 @@ final List<OnBoardModel> onBoardData = [
         "Take before and after photos to visualize progress and get the shape that you dream about",
     imgUrl: 'assets/images/phone.png',
     imgAlign: "bottom", 
-    paddingConfig: {"title": 0, "description": 0, "img": 30}),
+    paddingImg: 30,
   ),
 ];
 
