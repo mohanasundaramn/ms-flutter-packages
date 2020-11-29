@@ -176,32 +176,33 @@ class OnBoard extends StatelessWidget {
                 );
               },
             ),
-            Consumer<OnBoardState>(
-              builder:
-                  (BuildContext context, OnBoardState state, Widget child) {
-                return Container(
-                  height: footerContentHeight,
-                  width: screenSize.width,
-                  alignment: Alignment.center,
-                  child: ButtonTheme(
-                    minWidth: 230,
-                    height: 50,
-                    child: nextButton != null
-                        ? nextButton
-                        : RaisedButton(
-                            shape: StadiumBorder(),
-                            elevation: 0,
-                            color: Colors.blueAccent,
-                            onPressed: () => _onNextTap(state),
-                            child: Text(
-                              state.isLastPage ? "Done" : "Next",
-                              style: const TextStyle(color: Colors.white),
+            if (nextButton != null)
+              Consumer<OnBoardState>(
+                builder:
+                    (BuildContext context, OnBoardState state, Widget child) {
+                  return Container(
+                    height: footerContentHeight,
+                    width: screenSize.width,
+                    alignment: Alignment.center,
+                    child: ButtonTheme(
+                      minWidth: 230,
+                      height: 50,
+                      child: nextButton != null
+                          ? nextButton
+                          : RaisedButton(
+                              shape: StadiumBorder(),
+                              elevation: 0,
+                              color: Colors.blueAccent,
+                              onPressed: () => _onNextTap(state),
+                              child: Text(
+                                state.isLastPage ? "Done" : "Next",
+                                style: const TextStyle(color: Colors.white),
+                              ),
                             ),
-                          ),
-                  ),
-                );
-              },
-            ),
+                    ),
+                  );
+                },
+              ),
           ],
         ),
       ),
