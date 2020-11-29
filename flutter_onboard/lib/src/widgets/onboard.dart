@@ -118,7 +118,7 @@ class OnBoard extends StatelessWidget {
                       return Container(
                         child: Column(
                           children: <Widget>[
-                            Container(
+                            Expanded(
                               child: Image.asset(
                                 onBoardData[index].imgUrl,
                                 width: imageWidth,
