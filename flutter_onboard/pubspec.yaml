@@ -5,12 +5,12 @@ homepage: https://github.com/mohanasundaramn/ms-flutter-packages
 repository: https://github.com/mohanasundaramn/ms-flutter-packages/tree/master/flutter_onboard
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^4.1.2
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:

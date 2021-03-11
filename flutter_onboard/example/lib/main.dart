@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           nextButton: Consumer<OnBoardState>(
-            builder: (BuildContext context, OnBoardState state, Widget child) {
+            builder: (BuildContext context, OnBoardState state, Widget? child) {
               return InkWell(
                 onTap: () => _onNextTap(state),
                 child: Container(
