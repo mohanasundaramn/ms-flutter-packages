@@ -1,3 +1,3 @@
-final double skipContainerHeight = 60;
-final double footerContentHeight = 80;
-final double pageIndicatorHeight = 40;
+const double skipContainerHeight = 60;
+const double footerContentHeight = 80;
+const double pageIndicatorHeight = 40;

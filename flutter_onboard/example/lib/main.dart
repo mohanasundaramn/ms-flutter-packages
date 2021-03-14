@@ -25,13 +25,13 @@ class HomeScreen extends StatelessWidget {
         body: OnBoard(
           pageController: _pageController,
           onSkip: () {
-            print('skipped');
+            // print('skipped');
           },
           onDone: () {
-            print('done tapped');
+            // print('done tapped');
           },
           onBoardData: onBoardData,
-          titleStyles: TextStyle(
+          titleStyles: const TextStyle(
             color: Colors.deepOrange,
             fontSize: 18,
             fontWeight: FontWeight.w900,
@@ -41,18 +41,18 @@ class HomeScreen extends StatelessWidget {
             fontSize: 16,
             color: Colors.brown.shade300,
           ),
-          pageIndicatorStyle: PageIndicatorStyle(
+          pageIndicatorStyle: const PageIndicatorStyle(
             width: 100,
             inactiveColor: Colors.deepOrangeAccent,
             activeColor: Colors.deepOrange,
             inactiveSize: Size(8, 8),
             activeSize: Size(12, 12),
           ),
-          skipButton: FlatButton(
+          skipButton: TextButton(
             onPressed: () {
-              print('skipped');
+              // print('skipped');
             },
-            child: Text(
+            child: const Text(
               "Skip",
               style: TextStyle(color: Colors.deepOrangeAccent),
             ),
@@ -67,13 +67,13 @@ class HomeScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [Colors.redAccent, Colors.deepOrangeAccent],
                     ),
                   ),
                   child: Text(
                     state.isLastPage ? "Done" : "Next",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -91,28 +91,28 @@ class HomeScreen extends StatelessWidget {
     if (!onBoardState.isLastPage) {
       _pageController.animateToPage(
         onBoardState.page + 1,
-        duration: Duration(milliseconds: 250),
+        duration: const Duration(milliseconds: 250),
         curve: Curves.easeInOutSine,
       );
     } else {
-      print("done");
+      // print("done");
     }
   }
 }
 
 final List<OnBoardModel> onBoardData = [
-  OnBoardModel(
+  const OnBoardModel(
     title: "Set your own goals and get better",
     description: "Goal support your motivation and inspire you to work harder",
     imgUrl: "assets/images/weight.png",
   ),
-  OnBoardModel(
+  const OnBoardModel(
     title: "Track your progress with statistics",
     description:
         "Analyse personal result with detailed chart and numerical values",
     imgUrl: 'assets/images/graph.png',
   ),
-  OnBoardModel(
+  const OnBoardModel(
     title: "Create photo comparissions and share your results",
     description:
         "Take before and after photos to visualize progress and get the shape that you dream about",
