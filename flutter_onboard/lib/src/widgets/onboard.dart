@@ -23,22 +23,22 @@ class OnBoard extends StatelessWidget {
   final PageController pageController;
 
   /// Title text style
-  final TextStyle titleStyles;
+  final TextStyle? titleStyles;
 
   /// Description text style
-  final TextStyle descriptionStyles;
+  final TextStyle? descriptionStyles;
 
   /// OnBoard Image width
-  final double imageWidth;
+  final double? imageWidth;
 
   /// OnBoard Image height
-  final double imageHeight;
+  final double? imageHeight;
 
   /// Skip Button Widget
-  final Widget skipButton;
+  final Widget? skipButton;
 
   /// Next Button Widget
-  final Widget nextButton;
+  final Widget? nextButton;
 
   /// Animation [Duration] for transition from one page to another
   /// @Default [Duration(milliseconds:250)]
@@ -52,11 +52,11 @@ class OnBoard extends StatelessWidget {
   final PageIndicatorStyle pageIndicatorStyle;
 
   const OnBoard({
-    Key key,
-    @required this.onBoardData,
-    @required this.onSkip,
-    @required this.onDone,
-    @required this.pageController,
+    Key? key,
+    required this.onBoardData,
+    required this.onSkip,
+    required this.onDone,
+    required this.pageController,
     this.titleStyles,
     this.descriptionStyles,
     this.imageWidth,
@@ -108,7 +108,7 @@ class OnBoard extends StatelessWidget {
               child: Container(
                 height: pageViewHeight,
                 child: Consumer<OnBoardState>(builder:
-                    (BuildContext context, OnBoardState state, Widget child) {
+                    (BuildContext context, OnBoardState state, Widget? child) {
                   return PageView.builder(
                     controller: pageController,
                     onPageChanged: (page) =>
@@ -165,7 +165,7 @@ class OnBoard extends StatelessWidget {
             ),
             Consumer<OnBoardState>(
               builder:
-                  (BuildContext context, OnBoardState state, Widget child) {
+                  (BuildContext context, OnBoardState state, Widget? child) {
                 return Container(
                   height: pageIndicatorHeight,
                   child: PageIndicator(
@@ -178,7 +178,7 @@ class OnBoard extends StatelessWidget {
             ),
             Consumer<OnBoardState>(
               builder:
-                  (BuildContext context, OnBoardState state, Widget child) {
+                  (BuildContext context, OnBoardState state, Widget? child) {
                 return Container(
                   height: footerContentHeight,
                   width: screenSize.width,
@@ -187,7 +187,7 @@ class OnBoard extends StatelessWidget {
                     minWidth: 230,
                     height: 50,
                     child: nextButton != null
-                        ? nextButton
+                        ? nextButton!
                         : RaisedButton(
                             shape: StadiumBorder(),
                             elevation: 0,

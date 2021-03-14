@@ -10,12 +10,12 @@ class PageIndicator extends StatelessWidget {
   final int activePage;
 
   /// styling [PageIndicatorStyle]
-  final PageIndicatorStyle pageIndicatorStyle;
+  final PageIndicatorStyle? pageIndicatorStyle;
 
   const PageIndicator({
-    Key key,
-    @required this.count,
-    @required this.activePage,
+    Key? key,
+    required this.count,
+    required this.activePage,
     this.pageIndicatorStyle,
   }) : super(key: key);
 
@@ -25,7 +25,7 @@ class PageIndicator extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeInOutSine,
-      width: pageIndicatorStyle.width,
+      width: pageIndicatorStyle!.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: _dots,
@@ -34,24 +34,24 @@ class PageIndicator extends StatelessWidget {
   }
 
   Widget _dotBuilder(index) {
-    final activeSize = pageIndicatorStyle.activeSize;
-    final inactiveSize = pageIndicatorStyle.inactiveSize;
+    final activeSize = pageIndicatorStyle!.activeSize;
+    final inactiveSize = pageIndicatorStyle!.inactiveSize;
 
     return index == activePage
         ? Container(
-            width: activeSize.width,
+            width: activeSize!.width,
             height: activeSize.height,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: pageIndicatorStyle.activeColor,
+              color: pageIndicatorStyle!.activeColor,
             ),
           )
         : Container(
-            width: inactiveSize.width,
+            width: inactiveSize!.width,
             height: inactiveSize.height,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: pageIndicatorStyle.inactiveColor,
+              color: pageIndicatorStyle!.inactiveColor,
             ),
           );
   }
