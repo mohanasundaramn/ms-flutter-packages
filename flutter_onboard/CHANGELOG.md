@@ -1,3 +1,7 @@
+## [1.0.0]
+
+- Migrated to Null-Safety
+- Linting added
 ## [0.1.0]
 
 - Updated to latest version of provider package
