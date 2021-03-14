@@ -71,11 +71,7 @@ class OnBoard extends StatelessWidget {
         inactiveColor: Colors.blueAccent,
         activeSize: Size(12, 12),
         inactiveSize: Size(8, 8)),
-  })  : assert(onBoardData != null),
-        assert(onDone != null),
-        assert(onSkip != null),
-        assert(pageController != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -93,19 +89,17 @@ class OnBoard extends StatelessWidget {
             Container(
               height: skipContainerHeight,
               alignment: Alignment.centerRight,
-              child: skipButton != null
-                  ? skipButton
-                  : FlatButton(
-                      onPressed: onSkip,
-                      child: const Text(
-                        "Skip",
-                        style: const TextStyle(color: Colors.blueAccent),
-                      ),
+              child: skipButton ??
+                  TextButton(
+                    onPressed: onSkip,
+                    child: const Text(
+                      "Skip",
+                      style: TextStyle(color: Colors.blueAccent),
                     ),
+                  ),
             ),
             Expanded(
-              flex: 1,
-              child: Container(
+              child: SizedBox(
                 height: pageViewHeight,
                 child: Consumer<OnBoardState>(builder:
                     (BuildContext context, OnBoardState state, Widget? child) {
@@ -115,10 +109,10 @@ class OnBoard extends StatelessWidget {
                         state.onPageChanged(page, onBoardData.length),
                     itemCount: onBoardData.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
+                      return SizedBox(
                         child: Column(
                           children: <Widget>[
-                            Container(
+                            SizedBox(
                               child: Image.asset(
                                 onBoardData[index].imgUrl,
                                 width: imageWidth,
@@ -132,12 +126,11 @@ class OnBoard extends StatelessWidget {
                               child: Text(
                                 onBoardData[index].title,
                                 textAlign: TextAlign.center,
-                                style: titleStyles != null
-                                    ? titleStyles
-                                    : const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                style: titleStyles ??
+                                    const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                               ),
                             ),
                             Container(
@@ -147,12 +140,11 @@ class OnBoard extends StatelessWidget {
                               child: Text(
                                 onBoardData[index].description,
                                 textAlign: TextAlign.center,
-                                style: descriptionStyles != null
-                                    ? descriptionStyles
-                                    : const TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black54,
-                                      ),
+                                style: descriptionStyles ??
+                                    const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black54,
+                                    ),
                               ),
                             ),
                           ],
@@ -166,7 +158,7 @@ class OnBoard extends StatelessWidget {
             Consumer<OnBoardState>(
               builder:
                   (BuildContext context, OnBoardState state, Widget? child) {
-                return Container(
+                return SizedBox(
                   height: pageIndicatorHeight,
                   child: PageIndicator(
                     count: onBoardData.length,
@@ -188,10 +180,11 @@ class OnBoard extends StatelessWidget {
                     height: 50,
                     child: nextButton != null
                         ? nextButton!
-                        : RaisedButton(
-                            shape: StadiumBorder(),
-                            elevation: 0,
-                            color: Colors.blueAccent,
+                        : ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: const StadiumBorder(),
+                              elevation: 0,
+                            ),
                             onPressed: () => _onNextTap(state),
                             child: Text(
                               state.isLastPage ? "Done" : "Next",

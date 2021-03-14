@@ -1,6 +1,6 @@
 name: flutter_onboard
 description: A simple, elegant and easy to use onboard widget for both android and ios devices.
-version: 0.1.0
+version: 1.0.0
 homepage: https://github.com/mohanasundaramn/ms-flutter-packages
 repository: https://github.com/mohanasundaramn/ms-flutter-packages/tree/master/flutter_onboard
 
@@ -15,4 +15,5 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  lint: ^1.0.0
 flutter:

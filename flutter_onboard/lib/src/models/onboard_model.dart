@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class OnBoardModel {
   final String title;
   final String description;
