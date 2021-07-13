@@ -1,16 +1,11 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_onboard/src/models/onboard_state_model.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class OnBoardState extends ChangeNotifier {
-  int _page = 0;
-  bool _isLastPage = false;
-
-  int get page => _page;
-  bool get isLastPage => _isLastPage;
+class OnBoardStateNotifier extends StateNotifier<OnBoardState> {
+  OnBoardStateNotifier() : super(const OnBoardState());
 
   void onPageChanged(int page, int dataLength) {
-    _page = page;
-    _isLastPage = _page == dataLength - 1;
-    notifyListeners();
+    final isLastPage = page == dataLength - 1;
+    state = state.copyWith(page: page, isLastPage: isLastPage);
   }
 }
