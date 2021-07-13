@@ -1,7 +1,13 @@
+## [1.0.1]
+
+- onSkip callback is now not a required field but either "onSkip callback" or "skipButton" needs to be provided to OnBoard widget, else it will throw exception.
+- onDone callback is now not a required field but either "onDone callback" or "nextButton" needs to be provided to OnBoard widget, else it will throw exception.
+
 ## [1.0.0]
 
 - Migrated to Null-Safety
 - Linting added
+
 ## [0.1.0]
 
 - Updated to latest version of provider package

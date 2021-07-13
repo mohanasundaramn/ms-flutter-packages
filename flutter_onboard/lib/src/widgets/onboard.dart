@@ -11,12 +11,10 @@ class OnBoard extends StatelessWidget {
   final List<OnBoardModel> onBoardData;
 
   /// OnTapping skip button action
-  /// @Required
-  final VoidCallback onSkip;
+  final VoidCallback? onSkip;
 
   /// OnTapping done button action
-  ///  @Required
-  final VoidCallback onDone;
+  final VoidCallback? onDone;
 
   /// Controller for [PageView]
   /// @Required
@@ -54,8 +52,8 @@ class OnBoard extends StatelessWidget {
   const OnBoard({
     Key? key,
     required this.onBoardData,
-    required this.onSkip,
-    required this.onDone,
+    this.onSkip,
+    this.onDone,
     required this.pageController,
     this.titleStyles,
     this.descriptionStyles,
@@ -91,7 +89,7 @@ class OnBoard extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: skipButton ??
                   TextButton(
-                    onPressed: onSkip,
+                    onPressed: () => _onSkipPressed(onSkip),
                     child: const Text(
                       "Skip",
                       style: TextStyle(color: Colors.blueAccent),
@@ -209,7 +207,21 @@ class OnBoard extends StatelessWidget {
         curve: curve,
       );
     } else {
-      onDone();
+      if (onDone == null) {
+        throw Exception(
+            'Either provide "onDone" callback or add "nextButton" Widget to "OnBoard" Widget to handle done state');
+      } else {
+        onDone!();
+      }
+    }
+  }
+
+  void _onSkipPressed(VoidCallback? onSkip) {
+    if (onSkip == null) {
+      throw Exception(
+          'Either provide "onSkip" callback or add "skipButton" Widget to "OnBoard" Widget to handle skip state');
+    } else {
+      onSkip();
     }
   }
 }

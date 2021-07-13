@@ -24,9 +24,11 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         body: OnBoard(
           pageController: _pageController,
+          // Either Provide onSkip Callback or skipButton Widget to handle skip state
           onSkip: () {
-            // print('skipped');
+            // print('skip tapped');
           },
+          // Either Provide onDone Callback or nextButton Widget to handle done state
           onDone: () {
             // print('done tapped');
           },
@@ -48,15 +50,17 @@ class HomeScreen extends StatelessWidget {
             inactiveSize: Size(8, 8),
             activeSize: Size(12, 12),
           ),
+          // Either Provide onSkip Callback or skipButton Widget to handle skip state
           skipButton: TextButton(
             onPressed: () {
-              // print('skipped');
+              //print('skipButton pressed');
             },
             child: const Text(
               "Skip",
               style: TextStyle(color: Colors.deepOrangeAccent),
             ),
           ),
+          // Either Provide onDone Callback or nextButton Widget to handle done state
           nextButton: Consumer<OnBoardState>(
             builder: (BuildContext context, OnBoardState state, Widget? child) {
               return InkWell(
@@ -95,7 +99,7 @@ class HomeScreen extends StatelessWidget {
         curve: Curves.easeInOutSine,
       );
     } else {
-      // print("done");
+      //print("nextButton pressed");
     }
   }
 }
