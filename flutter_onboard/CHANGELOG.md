@@ -1,3 +1,7 @@
+## [1.0.2]
+
+- Overflow issue fixed for smaller devices.
+
 ## [1.0.1]
 
 - onSkip callback is now not a required field but either "onSkip callback" or "skipButton" needs to be provided to OnBoard widget, else it will throw exception.

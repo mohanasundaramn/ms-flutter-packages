@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
           pageController: _pageController,
           // Either Provide onSkip Callback or skipButton Widget to handle skip state
           onSkip: () {
-            // print('skip tapped');
+            // print('skipped');
           },
           // Either Provide onDone Callback or nextButton Widget to handle done state
           onDone: () {

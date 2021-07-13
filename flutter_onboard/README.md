@@ -8,7 +8,7 @@ An awesome OnBoard ui for both android and ios
 
 ```yaml
 dependencies:
-  flutter_onboard: ^1.0.0
+  flutter_onboard: ^1.0.2
 ```
 
 ## Basic Usage
@@ -21,9 +21,11 @@ import 'package:flutter_onboard/flutter_onboard.dart';
 OnBoard(
     onBoardData: onBoardData ,
     pageController: pageController,
+    // Either Provide onSkip Callback or skipButton Widget to handle skip state
     onSkip: () {
       print('skipped');
     },
+    // Either Provide onDone Callback or nextButton Widget to handle done state
     onDone: () {
       print('done tapped');
     },
@@ -103,9 +105,11 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         body: OnBoard(
           pageController: _pageController,
+          // Either Provide onSkip Callback or skipButton Widget to handle skip state
           onSkip: () {
             // print('skipped');
           },
+          // Either Provide onDone Callback or nextButton Widget to handle done state
           onDone: () {
             // print('done tapped');
           },
@@ -127,6 +131,7 @@ class HomeScreen extends StatelessWidget {
             inactiveSize: Size(8, 8),
             activeSize: Size(12, 12),
           ),
+          // Either Provide onSkip Callback or skipButton Widget to handle skip state
           skipButton: TextButton(
             onPressed: () {
               // print('skipped');
@@ -136,6 +141,7 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(color: Colors.deepOrangeAccent),
             ),
           ),
+          // Either Provide onDone Callback or nextButton Widget to handle done state
           nextButton: Consumer<OnBoardState>(
             builder: (BuildContext context, OnBoardState state, Widget? child) {
               return InkWell(
