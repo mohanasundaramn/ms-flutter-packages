@@ -1,3 +1,11 @@
+## [1.0.4]
+
+- `provider` package updated to v6.0.0
+
+## [1.0.3]
+
+- Docs updated.
+
 ## [1.0.2]
 
 - Overflow issue fixed for smaller devices.

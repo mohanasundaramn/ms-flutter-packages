@@ -8,7 +8,7 @@ An awesome OnBoard ui for both android and ios
 
 ```yaml
 dependencies:
-  flutter_onboard: ^1.0.2
+  flutter_onboard: ^1.0.4
 ```
 
 ## Basic Usage
@@ -61,8 +61,8 @@ final List<OnBoardModel> onBoardData = [
 | Properties           | Required | Description                                                                            |
 | -------------------- | -------- | -------------------------------------------------------------------------------------- |
 | `onBoardData`        | true     | `[List<OnBoardModel>]` Data for OnBoard                                                |
-| `onSkip`             | true     | `[VoidCallback]`, when skip action performed                                           |
-| `onDone`             | true     | `[VoidCallback]`, when done action performed                                           |
+| `onSkip`             | false    | `[VoidCallback]`, when skip action performed                                           |
+| `onDone`             | false    | `[VoidCallback]`, when done action performed                                           |
 | `titleStyles`        | false    | `[TextStyles]`, used to style title text                                               |
 | `descriptionStyles`  | false    | `[TextStyles]`, used to style description text                                         |
 | `imageWidth`         | false    | `[double]` OnBoard Image width                                                         |
@@ -211,8 +211,6 @@ for more info check [example](example)
 ## TODO
 
 - Add more custom page indicators.
-
-- Dynamic calculation of width, height, padding, margin.
 
 - Writing tests
 
