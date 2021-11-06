@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'onboard_state_model.dart';
 
@@ -129,19 +130,15 @@ class _$_OnBoardState implements _OnBoardState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _OnBoardState &&
-            (identical(other.page, page) ||
-                const DeepCollectionEquality().equals(other.page, page)) &&
+        (other.runtimeType == runtimeType &&
+            other is _OnBoardState &&
+            (identical(other.page, page) || other.page == page) &&
             (identical(other.isLastPage, isLastPage) ||
-                const DeepCollectionEquality()
-                    .equals(other.isLastPage, isLastPage)));
+                other.isLastPage == isLastPage));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(page) ^
-      const DeepCollectionEquality().hash(isLastPage);
+  int get hashCode => Object.hash(runtimeType, page, isLastPage);
 
   @JsonKey(ignore: true)
   @override
@@ -153,9 +150,9 @@ abstract class _OnBoardState implements OnBoardState {
   const factory _OnBoardState({int page, bool isLastPage}) = _$_OnBoardState;
 
   @override
-  int get page => throw _privateConstructorUsedError;
+  int get page;
   @override
-  bool get isLastPage => throw _privateConstructorUsedError;
+  bool get isLastPage;
   @override
   @JsonKey(ignore: true)
   _$OnBoardStateCopyWith<_OnBoardState> get copyWith =>
