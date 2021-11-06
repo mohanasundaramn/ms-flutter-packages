@@ -8,7 +8,7 @@ An awesome OnBoard ui for both android and ios
 
 ```yaml
 dependencies:
-  flutter_onboard: ^1.0.4
+  flutter_onboard: ^2.0.0
 ```
 
 ## Basic Usage

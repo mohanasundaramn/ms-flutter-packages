@@ -1,0 +1,17 @@
+name: unsplash_dart
+description: Unsplash SDK for flutter and dart application
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  dio: ^4.0.0
+  freezed_annotation: ^0.14.3
+  json_serializable: ^5.0.0
+
+dev_dependencies:
+  lint: ^1.6.0
+  freezed: ^0.14.5
+  build_runner: ^2.1.1
